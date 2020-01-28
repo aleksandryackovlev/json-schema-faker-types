@@ -7,6 +7,7 @@
   "scripts": {
     "test:watch": "tsc -w",
     "test": "tsc",
+    "lint": "eslint --ext=ts .",
     "release": "standard-version",
     "commit": "git-cz"
   },
@@ -24,9 +25,15 @@
   },
   "homepage": "https://github.com/aleksandryackovlev/json-schema-faker-typed#readme",
   "devDependencies": {
+    "@typescript-eslint/eslint-plugin": "^2.18.0",
+    "@typescript-eslint/parser": "^2.18.0",
     "commitizen": "^4.0.3",
     "cz-conventional-changelog": "^3.1.0",
+    "eslint": "^6.8.0",
+    "eslint-config-prettier": "^6.10.0",
+    "eslint-plugin-prettier": "^3.1.2",
     "json-schema-faker": "^0.5.0-rc23",
+    "prettier": "^1.19.1",
     "standard-version": "^7.1.0",
     "typescript": "^3.7.5"
   },
