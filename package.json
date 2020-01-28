@@ -1,0 +1,43 @@
+{
+  "name": "json-schema-faker-typed",
+  "version": "0.0.1",
+  "description": "TypeScript definitions for json-schema-faker",
+  "main": "",
+  "types": "index.d.ts",
+  "scripts": {
+    "test:watch": "tsc -w",
+    "test": "tsc",
+    "release": "standard-version",
+    "commit": "git-cz"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/aleksandryackovlev/json-schema-faker-typed.git"
+  },
+  "author": "Aleksandr Yackovlev <aleksandryackovlev@yandex.ru>",
+  "license": "MIT",
+  "files": [
+    "index.d.ts"
+  ],
+  "bugs": {
+    "url": "https://github.com/aleksandryackovlev/json-schema-faker-typed/issues"
+  },
+  "homepage": "https://github.com/aleksandryackovlev/json-schema-faker-typed#readme",
+  "devDependencies": {
+    "commitizen": "^4.0.3",
+    "cz-conventional-changelog": "^3.1.0",
+    "json-schema-faker": "^0.5.0-rc23",
+    "standard-version": "^7.1.0",
+    "typescript": "^3.7.5"
+  },
+  "dependencies": {
+    "@types/chance": "^1.0.8",
+    "@types/faker": "^4.1.9"
+  },
+  "config": {
+    "commitizen": {
+      "path": "./node_modules/cz-conventional-changelog"
+    }
+  },
+  "typeScriptVersion": "2.8"
+}
