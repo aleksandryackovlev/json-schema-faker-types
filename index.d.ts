@@ -177,21 +177,21 @@ declare module 'json-schema-faker' {
     randexp: (value: string) => string;
   }
 
-  interface JFC {
+  interface JSF {
     (schema: JSONSchema, refs?: JSONSchema[], cwd?: string): JFSResult; // done
     generate: (schema: JSONSchema, refs?: JSONSchema[]) => JFSResult; // done
     resolve: (schema: JSONSchema, refs?: JSONSchema[], cwd?: string) => Promise<JFSResult>; // done
     format: string;
     option: string;
     random: JFSGenerators;
-    extend: (name: string, cb: () => Faker.FakerStatic | Chance.Chance) => JFC; // done
-    define: (name: string, cb: (value: JFSResult, schema: JSONSchema) => JFSResult) => JFC; // done
-    reset: (name?: string) => JFC; // done
+    extend: (name: string, cb: () => Faker.FakerStatic | Chance.Chance) => JSF; // done
+    define: (name: string, cb: (value: JFSResult, schema: JSONSchema) => JFSResult) => JSF; // done
+    reset: (name?: string) => JSF; // done
     locate: (name: string) => Faker.FakerStatic | Chance.Chance; // done
     version: string;
   }
 
-  const jfc: JFC;
+  const jsf: JSF;
 
-  export = jfc;
+  export = jsf;
 }
