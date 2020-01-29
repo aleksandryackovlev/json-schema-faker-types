@@ -152,16 +152,16 @@ declare module 'json-schema-faker' {
 
   const JSONSchemaKeys: (keyof JSONSchema)[];
 
-  type JFSResult =
+  type JSFResult =
     | string
     | number
     | Date
     | boolean
     | null
     | JSFResult[]
-    | { [key: string]: JFSResult };
+    | { [key: string]: JSFResult };
 
-  interface JFSGenerators {
+  interface JSFGenerators {
     pick: <T>(arr: T[]) => T;
     date: (
       steps?: 'seconds' | 'minutes' | 'hours' | 'days' | 'weeks' | 'months' | 'years'
@@ -177,15 +177,41 @@ declare module 'json-schema-faker' {
     randexp: (value: string) => string;
   }
 
+  interface JSFOptions {
+    defaultInvalidTypeProduct: JSFResult;
+    defaultRandExpMax: number;
+    ignoreProperties: string[];
+    ignoreMissingRefs: boolean;
+    failOnInvalidTypes: boolean;
+    failOnInvalidFormat: boolean;
+    alwaysFakeOptionals: boolean;
+    optionalsProbability: false | number;
+    fixedProbabilities: boolean;
+    useExamplesValue: boolean;
+    useDefaultValue: boolean;
+    requiredOnly: boolean;
+    minItems: number;
+    maxItems: number;
+    minLength: number;
+    maxLength: number;
+    refDepthMin: number;
+    refDepthMax: number;
+    resolveJsonPath: boolean;
+    reuseProperties: boolean;
+    fillProperties: boolean;
+    replaceEmptyByRandomValue: boolean;
+  }
+
   interface JSF {
-    (schema: JSONSchema, refs?: JSONSchema[], cwd?: string): JFSResult; // done
-    generate: (schema: JSONSchema, refs?: JSONSchema[]) => JFSResult; // done
-    resolve: (schema: JSONSchema, refs?: JSONSchema[], cwd?: string) => Promise<JFSResult>; // done
+    (schema: JSONSchema, refs?: JSONSchema[], cwd?: string): JSFResult; // done
+    generate: (schema: JSONSchema, refs?: JSONSchema[]) => JSFResult; // done
+    resolve: (schema: JSONSchema, refs?: JSONSchema[], cwd?: string) => Promise<JSFResult>; // done
     format: string;
-    option: string;
-    random: JFSGenerators;
+    option: (opts: Partial<JSFOptions>) => void;
+    option: (opt: keyof JSFOptions, value: JSFOptions[keyof JSFOptions]) => void;
+    random: JSFGenerators;
     extend: (name: string, cb: () => Faker.FakerStatic | Chance.Chance) => JSF; // done
-    define: (name: string, cb: (value: JFSResult, schema: JSONSchema) => JFSResult) => JSF; // done
+    define: (name: string, cb: (value: JSFResult, schema: JSONSchema) => JSFResult) => JSF; // done
     reset: (name?: string) => JSF; // done
     locate: (name: string) => Faker.FakerStatic | Chance.Chance; // done
     version: string;
