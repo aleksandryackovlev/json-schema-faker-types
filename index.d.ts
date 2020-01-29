@@ -152,19 +152,43 @@ declare module 'json-schema-faker' {
 
   const JSONSchemaKeys: (keyof JSONSchema)[];
 
-  type JFSResult = string | number | Date | { [key: string]: JFSResult };
+  type JFSResult =
+    | string
+    | number
+    | Date
+    | boolean
+    | null
+    | JSFResult[]
+    | { [key: string]: JFSResult };
+
+  interface JFSGenerators {
+    pick: <T>(arr: T[]) => T;
+    date: (
+      steps?: 'seconds' | 'minutes' | 'hours' | 'days' | 'weeks' | 'months' | 'years'
+    ) => number | Date;
+    shuffle: <T>(arr: T[]) => T[];
+    number: (
+      min: number,
+      max: number,
+      defMin: number,
+      defMax: number,
+      hasPrecision = false
+    ) => number;
+    randexp: (value: string) => string;
+  }
 
   interface JFC {
-    (schema: JSONSchema, refs?: JSONSchema[], cwd?: string): JFSResult;
-    generate: (schema: JSONSchema, refs?: JSONSchema[]) => JFSResult;
-    resolve: (schema: JSONSchema, refs?: JSONSchema[], cwd?: string) => Promise<JFSResult>;
+    (schema: JSONSchema, refs?: JSONSchema[], cwd?: string): JFSResult; // done
+    generate: (schema: JSONSchema, refs?: JSONSchema[]) => JFSResult; // done
+    resolve: (schema: JSONSchema, refs?: JSONSchema[], cwd?: string) => Promise<JFSResult>; // done
     format: string;
     option: string;
-    extend: (name: string, cb: () => Faker.FakerStatic | Chance.Chance) => JFC;
-    define: (name: string, cb: () => Faker.FakerStatic | Chance.Chance) => JFC;
-    reset: (name: string) => JFC;
-    locate: (name: string) => Faker.FakerStatic | Chance.Chance;
-    version?: string;
+    random: JFSGenerators;
+    extend: (name: string, cb: () => Faker.FakerStatic | Chance.Chance) => JFC; // done
+    define: (name: string, cb: (value: JFSResult, schema: JSONSchema) => JFSResult) => JFC; // done
+    reset: (name?: string) => JFC; // done
+    locate: (name: string) => Faker.FakerStatic | Chance.Chance; // done
+    version: string;
   }
 
   const jfc: JFC;
