@@ -202,11 +202,18 @@ declare module 'json-schema-faker' {
     replaceEmptyByRandomValue: boolean;
   }
 
+  interface JSFFormatFunction {
+    (schema: JSONSchema): string;
+  }
+
   interface JSF {
     (schema: JSONSchema, refs?: JSONSchema[], cwd?: string): JSFResult; // done
     generate: (schema: JSONSchema, refs?: JSONSchema[]) => JSFResult; // done
     resolve: (schema: JSONSchema, refs?: JSONSchema[], cwd?: string) => Promise<JSFResult>; // done
-    format: string;
+    format: () => { [key: string]: JSFFormatFunction };
+    format: (formats: { [key: string]: JSFFormatFunction | null }) => void;
+    format: (name: string) => JSFFormatFunction;
+    format: (name: string, cb: JSFFormatFunction | null) => void;
     option: (opts: Partial<JSFOptions>) => void;
     option: (opt: keyof JSFOptions, value: JSFOptions[keyof JSFOptions]) => void;
     random: JSFGenerators;
