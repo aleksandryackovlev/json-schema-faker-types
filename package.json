@@ -1,5 +1,5 @@
 {
-  "name": "json-schema-faker-typed",
+  "name": "json-schema-faker-types",
   "version": "0.0.1",
   "description": "TypeScript definitions for json-schema-faker",
   "main": "",
@@ -13,7 +13,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/aleksandryackovlev/json-schema-faker-typed.git"
+    "url": "git+https://github.com/aleksandryackovlev/json-schema-faker-types.git"
   },
   "author": "Aleksandr Yackovlev <aleksandryackovlev@yandex.ru>",
   "license": "MIT",
@@ -21,9 +21,9 @@
     "index.d.ts"
   ],
   "bugs": {
-    "url": "https://github.com/aleksandryackovlev/json-schema-faker-typed/issues"
+    "url": "https://github.com/aleksandryackovlev/json-schema-faker-types/issues"
   },
-  "homepage": "https://github.com/aleksandryackovlev/json-schema-faker-typed#readme",
+  "homepage": "https://github.com/aleksandryackovlev/json-schema-faker-types#readme",
   "devDependencies": {
     "@typescript-eslint/eslint-plugin": "^2.18.0",
     "@typescript-eslint/parser": "^2.18.0",
