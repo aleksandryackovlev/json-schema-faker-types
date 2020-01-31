@@ -1,10 +1,6 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 declare module 'json-schema-faker' {
-  import Faker from 'faker';
-  import Chance from 'chance';
-
-  interface JSONSchema {
-    [index: string]: any;
+  export type JSONSchema = {
     $comment?: string;
     $id?: string;
     $ref?: string;
@@ -15,7 +11,7 @@ declare module 'json-schema-faker' {
     anyOf?: (JSONSchema | boolean)[];
     const?: any;
     contains?: JSONSchema | boolean;
-    contentEncoding?: JSONSchemaContentEncodingName | JSONSchemaContentEncoding;
+    contentEncoding?: JSONSchemaContentEncodingName;
     contentMediaType?: string;
     default?: any;
     definitions?: {
@@ -30,31 +26,13 @@ declare module 'json-schema-faker' {
     else?: JSONSchema | boolean;
     enum?: any[];
     examples?: any[];
+    'x-faker'?: any;
+    faker?: any;
+    'x-chance'?: any;
+    chance?: any;
     exclusiveMaximum?: number;
     exclusiveMinimum?: number;
-    format?:
-      | JSONSchemaFormat
-      | 'date'
-      | 'date-time'
-      | 'email'
-      | 'full-date'
-      | 'full-time'
-      | 'hostname'
-      | 'idn-email'
-      | 'idn-hostname'
-      | 'ipv4'
-      | 'ipv6'
-      | 'iri'
-      | 'iri-reference'
-      | 'json-pointer'
-      | 'json-pointer-uri-fragment'
-      | 'regex'
-      | 'relative-json-pointer'
-      | 'time'
-      | 'uri'
-      | 'uri-reference'
-      | 'uri-template'
-      | 'uuid';
+    format?: string;
     if?: JSONSchema | boolean;
     items?: JSONSchema | boolean | (JSONSchema | boolean)[];
     maximum?: number;
@@ -73,41 +51,19 @@ declare module 'json-schema-faker' {
       [key: string]: JSONSchema | boolean;
     };
     properties?: {
-      [key: string]: JSONSchema | boolean;
+      [key: string]: JSONSchema;
     };
     propertyNames?: JSONSchema | boolean;
     readOnly?: boolean;
     required?: string[];
     then?: JSONSchema | boolean;
     title?: string;
-    type?: JSONSchemaType | JSONSchemaTypeName | (JSONSchemaType | JSONSchemaTypeName)[];
+    type?: JSONSchemaTypeName | JSONSchemaTypeName[];
     uniqueItems?: boolean;
     writeOnly?: boolean;
-  }
+  };
 
-  enum JSONSchemaFormat {
-    Date = 'date',
-    DateTime = 'date-time',
-    Email = 'email',
-    Hostname = 'hostname',
-    IDNEmail = 'idn-email',
-    IDNHostname = 'idn-hostname',
-    IPv4 = 'ipv4',
-    IPv6 = 'ipv6',
-    IRI = 'iri',
-    IRIReference = 'iri-reference',
-    JSONPointer = 'json-pointer',
-    JSONPointerURIFragment = 'json-pointer-uri-fragment',
-    RegEx = 'regex',
-    RelativeJSONPointer = 'relative-json-pointer',
-    Time = 'time',
-    URI = 'uri',
-    URIReference = 'uri-reference',
-    URITemplate = 'uri-template',
-    UUID = 'uuid',
-  }
-
-  type JSONSchemaTypeName =
+  export type JSONSchemaTypeName =
     | 'array'
     | 'boolean'
     | 'integer'
@@ -116,22 +72,7 @@ declare module 'json-schema-faker' {
     | 'object'
     | 'string';
 
-  enum JSONSchemaType {
-    Array = 'array',
-    Boolean = 'boolean',
-    Integer = 'integer',
-    Null = 'null',
-    Number = 'number',
-    Object = 'object',
-    String = 'string',
-  }
-
-  type JSONSchemaTypeValue =
-    | JSONSchemaTypeName
-    | JSONSchemaType
-    | (JSONSchemaType | JSONSchemaTypeName)[];
-
-  type JSONSchemaContentEncodingName =
+  export type JSONSchemaContentEncodingName =
     | '7bit'
     | '8bit'
     | 'binary'
@@ -140,19 +81,7 @@ declare module 'json-schema-faker' {
     | 'ietf-token'
     | 'x-token';
 
-  enum JSONSchemaContentEncoding {
-    '7bit' = '7bit',
-    '8bit' = '8bit',
-    Binary = 'binary',
-    QuotedPrintable = 'quoted-printable',
-    Base64 = 'base64',
-    IETFToken = 'ietf-token',
-    XToken = 'x-token',
-  }
-
-  const JSONSchemaKeys: (keyof JSONSchema)[];
-
-  type JSFResult =
+  export type JSFResult =
     | string
     | number
     | Date
@@ -161,23 +90,23 @@ declare module 'json-schema-faker' {
     | JSFResult[]
     | { [key: string]: JSFResult };
 
-  interface JSFGenerators {
+  export interface JSFGenerators {
     pick: <T>(arr: T[]) => T;
     date: (
       steps?: 'seconds' | 'minutes' | 'hours' | 'days' | 'weeks' | 'months' | 'years'
-    ) => number | Date;
+    ) => number;
     shuffle: <T>(arr: T[]) => T[];
     number: (
       min: number,
       max: number,
       defMin: number,
       defMax: number,
-      hasPrecision = false
+      hasPrecision?: boolean
     ) => number;
     randexp: (value: string) => string;
   }
 
-  interface JSFOptions {
+  export interface JSFOptions {
     defaultInvalidTypeProduct: JSFResult;
     defaultRandExpMax: number;
     ignoreProperties: string[];
@@ -202,29 +131,29 @@ declare module 'json-schema-faker' {
     replaceEmptyByRandomValue: boolean;
   }
 
-  interface JSFFormatFunction {
+  export interface JSFFormatFunction {
     (schema: JSONSchema): string;
   }
 
-  interface JSF {
-    (schema: JSONSchema, refs?: JSONSchema[], cwd?: string): JSFResult; // done
-    generate: (schema: JSONSchema, refs?: JSONSchema[]) => JSFResult; // done
-    resolve: (schema: JSONSchema, refs?: JSONSchema[], cwd?: string) => Promise<JSFResult>; // done
-    format: () => { [key: string]: JSFFormatFunction };
-    format: (formats: { [key: string]: JSFFormatFunction | null }) => void;
-    format: (name: string) => JSFFormatFunction;
-    format: (name: string, cb: JSFFormatFunction | null) => void;
-    option: (opts: Partial<JSFOptions>) => void;
-    option: (opt: keyof JSFOptions, value: JSFOptions[keyof JSFOptions]) => void;
+  export interface JSF {
+    (schema: JSONSchema, refs?: JSONSchema[], cwd?: string): JSFResult;
+    generate(schema: JSONSchema, refs?: JSONSchema[]): JSFResult;
+    resolve(schema: JSONSchema, refs?: JSONSchema[], cwd?: string): Promise<JSFResult>;
+    format(): { [key: string]: JSFFormatFunction };
+    format(formats: { [key: string]: JSFFormatFunction | null }): void;
+    format(name: string): JSFFormatFunction;
+    format(name: string, cb: JSFFormatFunction | null): void;
+    option(opts: Partial<JSFOptions>): void;
+    option(opt: keyof JSFOptions, value: JSFOptions[keyof JSFOptions]): void;
     random: JSFGenerators;
-    extend: (name: string, cb: () => Faker.FakerStatic | Chance.Chance) => JSF; // done
-    define: (name: string, cb: (value: JSFResult, schema: JSONSchema) => JSFResult) => JSF; // done
-    reset: (name?: string) => JSF; // done
-    locate: (name: string) => Faker.FakerStatic | Chance.Chance; // done
+    extend(name: string, cb: () => object): JSF;
+    define(name: string, cb: (value: JSFResult, schema: JSONSchema) => JSFResult): JSF;
+    reset(name?: string): JSF;
+    locate(name: string): object;
     version: string;
   }
 
   const jsf: JSF;
 
-  export = jsf;
+  export default jsf;
 }
