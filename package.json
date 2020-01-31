@@ -25,6 +25,8 @@
   },
   "homepage": "https://github.com/aleksandryackovlev/json-schema-faker-types#readme",
   "devDependencies": {
+    "@types/chance": "^1.0.8",
+    "@types/faker": "^4.1.9",
     "@typescript-eslint/eslint-plugin": "^2.18.0",
     "@typescript-eslint/parser": "^2.18.0",
     "commitizen": "^4.0.3",
@@ -32,15 +34,13 @@
     "eslint": "^6.8.0",
     "eslint-config-prettier": "^6.10.0",
     "eslint-plugin-prettier": "^3.1.2",
+    "husky": "^4.2.1",
     "json-schema-faker": "^0.5.0-rc23",
     "prettier": "^1.19.1",
     "standard-version": "^7.1.0",
     "typescript": "^3.7.5"
   },
-  "dependencies": {
-    "@types/chance": "^1.0.8",
-    "@types/faker": "^4.1.9"
-  },
+  "dependencies": {},
   "config": {
     "commitizen": {
       "path": "./node_modules/cz-conventional-changelog"
