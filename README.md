@@ -1,9 +1,9 @@
 <div align="center">
   <a href="https://www.typescriptlang.org/">
-    <img src="https://raw.githubusercontent.com/remojansen/logo.ts/master/ts.svg" alt="Typescript logo" width="200" height="200">
+    <img src="https://raw.githubusercontent.com/remojansen/logo.ts/master/ts.png" alt="Typescript logo" width="200" height="200">
   </a>
   <a href="https://github.com/json-schema-faker/json-schema-faker">
-    <img src="https://raw.githubusercontent.com/json-schema-faker/json-schema-faker/master/logo/logo.svg" alt="json-schema-faker logo" width="200" height="200">
+    <img src="https://raw.githubusercontent.com/json-schema-faker/json-schema-faker/master/logo/JSF_logo.png" alt="json-schema-faker logo" width="560" height="200">
   </a>
 </div>
 
