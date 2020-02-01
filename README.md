@@ -1,4 +1,4 @@
-<div align="center">
+<div>
   <a href="https://www.typescriptlang.org/">
     <img src="https://raw.githubusercontent.com/remojansen/logo.ts/master/ts.png" alt="Typescript logo" width="100" height="100">
   </a>
