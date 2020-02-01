@@ -42,6 +42,16 @@
     "typescript": "^3.7.5"
   },
   "dependencies": {},
+  "keywords": [
+    "json",
+    "schema",
+    "faker",
+    "types",
+    "definitions",
+    "typescript",
+    "json-schema",
+    "json-schema-faker"
+  ],
   "config": {
     "commitizen": {
       "path": "./node_modules/cz-conventional-changelog"

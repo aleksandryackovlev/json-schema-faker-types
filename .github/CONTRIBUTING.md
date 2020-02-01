@@ -88,15 +88,6 @@ reference GitHub issues that this commit **Closes**.
 
 **Breaking Changes** should start with the word `BREAKING CHANGE:` with a space or two newlines. The rest of the commit message is then used for this.
 
-Example
-
-```
-BREAKING CHANGE: Updates to `Chunk.mapModules`.
-
-This release is not backwards compatible with `Webpack 2.x` due to breaking changes in webpack/webpack#4764
-Migration: see webpack/webpack#5225
-
-```
 
 ## Testing Your Pull Request
 
@@ -106,8 +97,8 @@ module. Thankfully, Github provides a means to do this. Add a dependency to the
 
 ```json
 {
-  "devDependencies": {
-    "openapi-client-sdk-loader": "null/openapi-client-sdk-loader#{id}/head"
+  "dependencies": {
+    "json-schema-faker-types": "null/json-schema-faker-types#{id}/head"
   }
 }
 ```
