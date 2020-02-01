@@ -84,7 +84,6 @@ declare module 'json-schema-faker' {
   export type JSFResult =
     | string
     | number
-    | Date
     | boolean
     | null
     | JSFResult[]
@@ -147,7 +146,7 @@ declare module 'json-schema-faker' {
     option(opt: keyof JSFOptions, value: JSFOptions[keyof JSFOptions]): void;
     random: JSFGenerators;
     extend(name: string, cb: () => object): JSF;
-    define(name: string, cb: (value: JSFResult, schema: JSONSchema) => JSFResult): JSF;
+    define(name: string, cb: (value: any, schema: JSONSchema) => JSFResult): JSF;
     reset(name?: string): JSF;
     locate(name: string): object;
     version: string;
