@@ -1,6 +1,7 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 declare module 'json-schema-faker' {
   export type JSONSchema = {
+    [key: string]: any;
     $comment?: string;
     $id?: string;
     $ref?: string;
@@ -25,7 +26,10 @@ declare module 'json-schema-faker' {
     description?: string;
     else?: JSONSchema | boolean;
     enum?: any[];
-    examples?: any[];
+    examples?: {
+      [key: string]: any;
+    };
+    example?: any;
     'x-faker'?: any;
     faker?: any;
     'x-chance'?: any;
