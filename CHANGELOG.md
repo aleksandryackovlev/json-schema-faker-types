@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.1.2](https://github.com/aleksandryackovlev/json-schema-faker-types/compare/v0.1.1...v0.1.2) (2020-02-08)
+
+
+### Bug Fixes
+
+* **types:** add the ability to extend json schema ([b52d2dc](https://github.com/aleksandryackovlev/json-schema-faker-types/commit/b52d2dc4514c7c55b9c55658523416fb25bae761))
+
 ### [0.1.1](https://github.com/aleksandryackovlev/json-schema-faker-types/compare/v0.1.0...v0.1.1) (2020-02-02)
 
 ## 0.1.0 (2020-02-01)
