@@ -27,19 +27,19 @@
   "homepage": "https://github.com/aleksandryackovlev/json-schema-faker-types#readme",
   "devDependencies": {
     "@types/chance": "^1.0.8",
-    "@types/faker": "^4.1.9",
-    "@typescript-eslint/eslint-plugin": "^2.18.0",
-    "@typescript-eslint/parser": "^2.18.0",
+    "@types/faker": "^5.1.5",
+    "@typescript-eslint/eslint-plugin": "^4.11.1",
+    "@typescript-eslint/parser": "^4.11.1",
     "commitizen": "^4.0.3",
     "cz-conventional-changelog": "^3.1.0",
-    "eslint": "^6.8.0",
-    "eslint-config-prettier": "^6.10.0",
+    "eslint": "^7.16.0",
+    "eslint-config-prettier": "^7.1.0",
     "eslint-plugin-prettier": "^3.1.2",
     "husky": "^4.2.1",
-    "json-schema-faker": "^0.5.0-rc23",
+    "json-schema-faker": "^0.5.0-rcv.32",
     "prettier": "^2.0.2",
-    "standard-version": "^8.0.1",
-    "typescript": "^3.7.5"
+    "standard-version": "^9.0.0",
+    "typescript": "^4.1.3"
   },
   "dependencies": {},
   "keywords": [
